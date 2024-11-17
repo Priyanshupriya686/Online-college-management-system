@@ -10,6 +10,7 @@
     "@mui/material": "^5.12.1",
     "@reduxjs/toolkit": "^1.9.5",
     "axios": "^1.3.6",
+    "caniuse-lite": "^1.0.30001680",
     "dotenv": "^16.1.3",
     "eslint-config-react-app": "^7.0.1",
     "react": "^18.2.0",
@@ -23,10 +24,10 @@
     "styled-components": "^5.3.10"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "rnpm install && eact-scripts test",
-    "eject": "react-scripts eject"
+  "start": "react-scripts start", 
+  "build": "react-scripts build", 
+  "test": "react-scripts test",  
+  "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
