@@ -52,7 +52,9 @@ const AdminDashboard = () => {
         <>
             <Box sx={{ display: 'flex' }}>
                 <CssBaseline />
-                <AppBar open={open} position='absolute' backgroundColor='red'>
+                <AppBar open={open} position='absolute' sx={{ 
+        backgroundColor: '#FFC0CB'  // e.g., '#ff0000' for red
+    }}>
                     <Toolbar sx={{ pr: '24px' }}>
                         <IconButton
                             edge="start"
