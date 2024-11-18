@@ -1,152 +1,102 @@
-import React, { useEffect } from 'react';
-import { Container, Grid } from '@mui/material';
-import { useDispatch, useSelector } from 'react-redux';
-import CountUp from 'react-countup';
-import { 
-  People, 
-  School, 
-  PersonOutline, 
-  AttachMoney,
-  Notifications,
-  TrendingUp,
-  PersonAdd,
-  AccessTime
-} from '@mui/icons-material';
+import { Container, Grid, Paper } from '@mui/material';
 import SeeNotice from '../../components/SeeNotice';
+import Students from "../../assets/img1.png";
+import Classes from "../../assets/img2.png";
+import Teachers from "../../assets/img3.png";
+import Fees from "../../assets/img4.png";
+import styled from 'styled-components';
+import CountUp from 'react-countup';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 import { getAllSclasses } from '../../redux/sclassRelated/sclassHandle';
 import { getAllStudents } from '../../redux/studentRelated/studentHandle';
 import { getAllTeachers } from '../../redux/teacherRelated/teacherHandle';
 
-const StatCard = ({ icon: Icon, title, value, prefix = '', trend = '+14%', color }) => (
-  <div className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition-all duration-200">
-    <div className="flex items-center justify-between mb-4">
-      <div className={`p-2 rounded-lg ${color}`}>
-        <Icon className="h-6 w-6 text-white" />
-      </div>
-      <span className="text-green-500 text-sm font-medium flex items-center gap-1">
-        <TrendingUp className="h-4 w-4" />
-        {trend}
-      </span>
-    </div>
-    <h3 className="text-sm text-gray-600 font-medium mb-2">{title}</h3>
-    <div className="flex items-baseline gap-2">
-      <span className="text-2xl font-bold text-gray-800">
-        {prefix}<CountUp start={0} end={value} duration={2.5} />
-      </span>
-    </div>
-  </div>
-);
-
-const ActivityCard = ({ icon: Icon, title, time, description, color }) => (
-  <div className="flex gap-4 items-start">
-    <div className={`p-2 rounded-lg ${color}`}>
-      <Icon className="h-5 w-5 text-white" />
-    </div>
-    <div>
-      <h4 className="font-medium text-gray-800">{title}</h4>
-      <p className="text-sm text-gray-500">{description}</p>
-      <span className="text-xs text-gray-400 flex items-center gap-1 mt-1">
-        <AccessTime className="h-3 w-3" /> {time}
-      </span>
-    </div>
-  </div>
-);
-
 const AdminHomePage = () => {
-  const dispatch = useDispatch();
-  const { studentsList } = useSelector((state) => state.student);
-  const { sclassesList } = useSelector((state) => state.sclass);
-  const { teachersList } = useSelector((state) => state.teacher);
-  const { currentUser } = useSelector(state => state.user);
-  const adminID = currentUser._id;
+    const dispatch = useDispatch();
+    const { studentsList } = useSelector((state) => state.student);
+    const { sclassesList } = useSelector((state) => state.sclass);
+    const { teachersList } = useSelector((state) => state.teacher);
 
-  useEffect(() => {
-    dispatch(getAllStudents(adminID));
-    dispatch(getAllSclasses(adminID, "Sclass"));
-    dispatch(getAllTeachers(adminID));
-  }, [adminID, dispatch]);
+    const { currentUser } = useSelector(state => state.user);
 
-  const numberOfStudents = studentsList?.length || 0;
-  const numberOfClasses = sclassesList?.length || 0;
-  const numberOfTeachers = teachersList?.length || 0;
+    const adminID = currentUser._id;
 
-  return (
-    <div className="min-h-screen bg-gray-50 p-6">
-      <Container maxWidth="xl">
-        <div className="mb-8">
-          <h1 className="text-2xl font-bold text-gray-800 mb-2">Dashboard Overview</h1>
-          <p className="text-gray-500">Welcome back, {currentUser.name}</p>
-        </div>
+    useEffect(() => {
+        dispatch(getAllStudents(adminID));
+        dispatch(getAllSclasses(adminID, "Sclass"));
+        dispatch(getAllTeachers(adminID));
+    }, [adminID, dispatch]);
 
-        <Grid container spacing={3}>
-          <Grid item xs={12} md={8}>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-              <StatCard
-                icon={People}
-                title="Total Students"
-                value={numberOfStudents}
-                color="bg-blue-500"
-              />
-              <StatCard
-                icon={School}
-                title="Total Classes"
-                value={numberOfClasses}
-                color="bg-purple-500"
-              />
-              <StatCard
-                icon={PersonOutline}
-                title="Total Teachers"
-                value={numberOfTeachers}
-                color="bg-green-500"
-              />
-              <StatCard
-                icon={AttachMoney}
-                title="Fees Collection"
-                value={23000}
-                prefix="$"
-                color="bg-yellow-500"
-              />
-            </div>
+    const numberOfStudents = studentsList && studentsList.length;
+    const numberOfClasses = sclassesList && sclassesList.length;
+    const numberOfTeachers = teachersList && teachersList.length;
 
-            <div className="bg-white rounded-2xl p-6 shadow-sm">
-              <div className="flex items-center justify-between mb-6">
-                <h2 className="text-lg font-bold text-gray-800">Recent Activity</h2>
-                <button className="text-blue-500 text-sm font-medium">View All</button>
-              </div>
-              <div className="space-y-6">
-                <ActivityCard
-                  icon={PersonAdd}
-                  title="New Student Registration"
-                  description="John Doe has been enrolled in Class X"
-                  time="2 hours ago"
-                  color="bg-blue-500"
-                />
-                <ActivityCard
-                  icon={Notifications}
-                  title="New Notice Published"
-                  description="End of term examination schedule has been posted"
-                  time="5 hours ago"
-                  color="bg-yellow-500"
-                />
-              </div>
-            </div>
-          </Grid>
-
-          <Grid item xs={12} md={4}>
-            <div className="bg-white rounded-2xl p-6 shadow-sm">
-              <div className="flex items-center justify-between mb-6">
-                <h2 className="text-lg font-bold text-gray-800">Recent Notices</h2>
-                <button className="text-blue-500 text-sm font-medium">View All</button>
-              </div>
-              <div className="space-y-4">
-                <SeeNotice />
-              </div>
-            </div>
-          </Grid>
-        </Grid>
-      </Container>
-    </div>
-  );
+    return (
+        <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+            <Grid container spacing={3}>
+                <Grid item xs={12} md={6} lg={6}>
+                    <StyledPaper>
+                        <StyledImage src={Students} alt="Students" />
+                        <Title>Total Students</Title>
+                        <Data start={0} end={numberOfStudents} duration={2.5} />
+                    </StyledPaper>
+                </Grid>
+                <Grid item xs={12} md={6} lg={6}>
+                    <StyledPaper>
+                        <StyledImage src={Classes} alt="Classes" />
+                        <Title>Total Classes</Title>
+                        <Data start={0} end={numberOfClasses} duration={5} />
+                    </StyledPaper>
+                </Grid>
+                <Grid item xs={12} md={6} lg={6}>
+                    <StyledPaper>
+                        <StyledImage src={Teachers} alt="Teachers" />
+                        <Title>Total Teachers</Title>
+                        <Data start={0} end={numberOfTeachers} duration={2.5} />
+                    </StyledPaper>
+                </Grid>
+                <Grid item xs={12} md={6} lg={6}>
+                    <StyledPaper>
+                        <StyledImage src={Fees} alt="Fees" />
+                        <Title>Fees Collection</Title>
+                        <Data start={0} end={23000} duration={2.5} prefix="$" />
+                    </StyledPaper>
+                </Grid>
+                <Grid item xs={12} md={12} lg={12}>
+                    <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
+                        <SeeNotice />
+                    </Paper>
+                </Grid>
+            </Grid>
+        </Container>
+    );
 };
+
+// Styled components
+const StyledPaper = styled(Paper)`
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+`;
+
+const StyledImage = styled.img`
+  width: 80px;  /* Adjust width to make images smaller */
+  height: 60px; /* Adjust height to maintain aspect ratio */
+  object-fit: contain;  /* Prevent image distortion */
+`;
+
+const Title = styled.p`
+  font-size: 1.25rem;
+`;
+
+const Data = styled(CountUp)`
+  font-size: calc(1.3rem + .6vw);
+  color: green;
+`;
 
 export default AdminHomePage;

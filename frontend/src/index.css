@@ -23,9 +23,14 @@ a {
 :root {
   --color-bg: #916fe7;
   --color-bg-variant: #2c2c6c;
-  --color-primary: #ed1c24;
+  --color-primary: #1f1f1f;
   --color-primary-variant: rgba(244, 48, 48, 0.4);
-  --color-light: rgba(255, 255, 255, 0.6);
+  --color-light: rgba(20, 20, 20, 0.6);
+}
+
+#technoimage{
+  width: 100%;
+  margin-bottom: 3rem;
 }
 
 /* FORM */

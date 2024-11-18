@@ -31,7 +31,7 @@ const TeacherHomePage = () => {
         <>
             <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
                 <Grid container spacing={3}>
-                    <Grid item xs={12} md={3} lg={3}>
+                    <Grid item xs={12} md={6} lg={6}>
                         <StyledPaper>
                             <img src={Students} alt="Students" />
                             <Title>
@@ -40,7 +40,7 @@ const TeacherHomePage = () => {
                             <Data start={0} end={numberOfStudents} duration={2.5} />
                         </StyledPaper>
                     </Grid>
-                    <Grid item xs={12} md={3} lg={3}>
+                    <Grid item xs={12} md={6} lg={6}>
                         <StyledPaper>
                             <img src={Lessons} alt="Lessons" />
                             <Title>
@@ -49,7 +49,7 @@ const TeacherHomePage = () => {
                             <Data start={0} end={numberOfSessions} duration={5} />
                         </StyledPaper>
                     </Grid>
-                    <Grid item xs={12} md={3} lg={3}>
+                    <Grid item xs={12} md={6} lg={6}>
                         <StyledPaper>
                             <img src={Tests} alt="Tests" />
                             <Title>
@@ -58,7 +58,7 @@ const TeacherHomePage = () => {
                             <Data start={0} end={24} duration={4} />
                         </StyledPaper>
                     </Grid>
-                    <Grid item xs={12} md={3} lg={3}>
+                    <Grid item xs={12} md={6} lg={6}>
                         <StyledPaper>
                             <img src={Time} alt="Time" />
                             <Title>

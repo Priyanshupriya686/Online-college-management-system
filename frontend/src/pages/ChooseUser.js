@@ -14,6 +14,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../redux/userRelated/userHandle';
 import Popup from '../components/Popup';
 
+import image1 from '../assets/tmsl.jpg'
+
 const ChooseUser = ({ visitor }) => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -85,6 +87,8 @@ const ChooseUser = ({ visitor }) => {
   return (
     <StyledContainer>
       <Container>
+        <div>
+          <img id='technoimage' src={image1} />
         <Grid container spacing={2} justifyContent="center">
           <Grid item xs={12} sm={6} md={4}>
             <div onClick={() => navigateHandler("Admin")}>
@@ -126,6 +130,7 @@ const ChooseUser = ({ visitor }) => {
             </StyledPaper>
           </Grid>
         </Grid>
+        </div>
       </Container>
       <Backdrop
         sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
@@ -142,7 +147,7 @@ const ChooseUser = ({ visitor }) => {
 export default ChooseUser;
 
 const StyledContainer = styled.div`
-  background: linear-gradient(to bottom, #411d70, #19118b);
+  background: #1f1f1f;
   height: 120vh;
   display: flex;
   justify-content: center;
@@ -157,7 +162,7 @@ const StyledPaper = styled(Paper)`
   cursor:pointer;
 
   &:hover {
-    background-color: #2c2c6c;
+    background-color: #ed1c24;
     color:white;
   }
 `;

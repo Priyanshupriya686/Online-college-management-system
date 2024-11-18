@@ -6,7 +6,7 @@ import studentImage from "../assets/students.png";
 
 const Homepage = () => {
   return (
-    <StyledContainer>
+    <StyledContainer >
       <Grid container spacing={2} justifyContent="center" alignItems="center">
         <Grid item xs={12} md={10}>
           {/* Main Card */}

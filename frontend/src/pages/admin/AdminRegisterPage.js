@@ -31,6 +31,23 @@ const AdminRegisterPage = () => {
     const [schoolNameError, setSchoolNameError] = useState(false);
     const role = "Admin"
 
+    const darkTheme = createTheme({
+        palette: {
+            mode: 'dark',
+            primary: {
+                main: '#FFC0CB', // Keeping your pink color for primary
+            },
+            background: {
+                default: '#121212',
+                paper: '#1e1e1e',
+            },
+            text: {
+                primary: '#ffffff',
+                secondary: '#b3b3b3',
+            },
+        },
+    });
+
     const handleSubmit = (event) => {
         event.preventDefault();
 
@@ -75,7 +92,7 @@ const AdminRegisterPage = () => {
     }, [status, currentUser, currentRole, navigate, error, response]);
 
     return (
-        <ThemeProvider theme={defaultTheme}>
+        <ThemeProvider theme={darkTheme}>
             <Grid container component="main" sx={{ height: '100vh' }}>
                 <CssBaseline />
                 <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
@@ -88,7 +105,7 @@ const AdminRegisterPage = () => {
                             alignItems: 'center',
                         }}
                     >
-                        <Typography variant="h4" sx={{ mb: 2, color: "#2c2143" }}>
+                        <Typography variant="h4" sx={{ mb: 2, color: "#ffffff" }}>
                             Admin Register
                         </Typography>
                         <Typography variant="h7">
