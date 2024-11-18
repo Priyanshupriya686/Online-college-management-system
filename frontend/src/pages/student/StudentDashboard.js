@@ -7,6 +7,7 @@ import {
     Typography,
     Divider,
     IconButton,
+    createTheme, ThemeProvider
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
@@ -27,11 +28,31 @@ const StudentDashboard = () => {
         setOpen(!open);
     };
 
+    const darkTheme = createTheme({
+        palette: {
+            mode: 'dark',
+            primary: {
+                main: '#FFC0CB', // Keeping your pink color for primary
+            },
+            background: {
+                default: '#121212',
+                paper: '#1e1e1e',
+            },
+            text: {
+                primary: '#ffffff',
+                secondary: '#b3b3b3',
+            },
+        },
+    });
+
     return (
         <>
+        <ThemeProvider theme={darkTheme}>
             <Box sx={{ display: 'flex' }}>
                 <CssBaseline />
-                <AppBar open={open} position='absolute'>
+                <AppBar open={open} position='absolute' sx={{ 
+        backgroundColor: '#ed1c24'  // e.g., '#ff0000' for red
+    }}>
                     <Toolbar sx={{ pr: '24px' }}>
                         <IconButton
                             edge="start"
@@ -84,6 +105,7 @@ const StudentDashboard = () => {
                     </Routes>
                 </Box>
             </Box>
+            </ThemeProvider>
         </>
     );
 }
