@@ -348,7 +348,7 @@ const ViewStudent = () => {
                 <br />
                 Class: {sclassName.sclassName}
                 <br />
-                School: {studentSchool.schoolName}
+                College: {studentSchool.schoolName}
                 {
                     subjectAttendance && Array.isArray(subjectAttendance) && subjectAttendance.length > 0 && (
                         <CustomPieChart data={chartData} />
