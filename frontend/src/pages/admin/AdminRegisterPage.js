@@ -115,7 +115,7 @@ const AdminRegisterPage = () => {
                                 margin="normal"
                                 required
                                 fullWidth
-                                id="collegeName"
+                                id="schoolName"
                                 label="Create your college name"
                                 name="collegeName"
                                 autoComplete="off"

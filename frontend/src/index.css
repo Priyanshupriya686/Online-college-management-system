@@ -12,11 +12,19 @@ a {
   display: none;
 }
 
-:root {
+/* :root {
   --color-bg: #916fe7;
   --color-bg-variant: #2c2c6c;
   --color-primary: #4db5ff;
   --color-primary-variant: rgba(77, 181, 255, 0.4);
+  --color-light: rgba(255, 255, 255, 0.6);
+} */
+
+:root {
+  --color-bg: #916fe7;
+  --color-bg-variant: #2c2c6c;
+  --color-primary: #ed1c24;
+  --color-primary-variant: rgba(244, 48, 48, 0.4);
   --color-light: rgba(255, 255, 255, 0.6);
 }
 
